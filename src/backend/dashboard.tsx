@@ -2,8 +2,7 @@ import { DiamondGeometry, Geometry } from './geom'
 import { Bridle, DiamondBridle } from './bridle'
 import { FlyParameters } from './fly'
 import { Composition } from './composition'
-import { newtonRaphson } from '@fvictorio/newton-raphson-method'
-import Big from 'big.js'
+import { minimize_bounded } from '../solver/bounded_solver'
 
 export abstract class Dashboard {
     geom: Geometry;
@@ -25,6 +24,46 @@ export abstract class Dashboard {
     _horiz_tension: number;
     _tension: number;
 
+
+    constructor(geom: Geometry, bridle: Bridle, fly: FlyParameters, compo: Composition) {
+        this.geom = geom
+        this.bridle = bridle
+        this.fly = fly
+        this.compo = compo
+
+        // Get sea level properties
+        this.pressure = this.fly.env.pressure(this.fly.altitude)
+        this.temperature = this.fly.env.temperature(this.fly.altitude)
+        this.density = this.fly.env.density(this.fly.altitude)
+
+        // Weight
+        this._weight = this.kite_weight()
+
+        // Center of pressure and gravity
+        this._cp = this.geom.cp()
+        // CG calculation uses cp for surface
+        this._cg = this.cg()
+        
+        // Geometric parameters
+        this._surface_area = this.geom.surface_area()
+        this._frame = this.geom.frame()
+
+        // Solve such that torque is zero
+        const min_func = (x: number) => Math.abs(this.torque(x))
+        const result = minimize_bounded(min_func, [Math.PI/180., Math.PI/2.])
+
+        if (!result.success) throw Error(result.status)
+        else this._aoa_no_torque = result.x
+
+        // Calculate corresponding lift and drag
+        this._lift = this.lift(this._aoa_no_torque)
+        this._drag = this.drag(this._aoa_no_torque)
+        
+        // Source : https://www.grc.nasa.gov/WWW/K-12/airplane/kitefor.html
+        this._vert_tension = this.vertical_tension()
+        this._horiz_tension = this.horiz_tension()
+        this._tension = Math.sqrt(Math.pow(this._horiz_tension, 2) + Math.pow(this._vert_tension, 2))
+    }
 
     lift(a: number) {
         const cl = this.geom.cl(a)
@@ -127,50 +166,6 @@ export abstract class Dashboard {
     abstract cg(): number
     abstract kite_weight(): number
     abstract torque(a: number): number
-
-    constructor(geom: Geometry, bridle: Bridle, fly: FlyParameters, compo: Composition) {
-        this.geom = geom
-        this.bridle = bridle
-        this.fly = fly
-        this.compo = compo
-
-        // Get sea level properties
-        this.pressure = this.fly.env.pressure(this.fly.altitude)
-        this.temperature = this.fly.env.temperature(this.fly.altitude)
-        this.density = this.fly.env.density(this.fly.altitude)
-
-        // Weight
-        this._weight = this.kite_weight()
-
-        // Center of pressure and gravity
-        this._cp = this.geom.cp()
-        // CG calculation uses cp for surface
-        this._cg = this.cg()
-        
-        // Geometric parameters
-        this._surface_area = this.geom.surface_area()
-        this._frame = this.geom.frame()
-
-        // Solve such that torque is zero
-        const min_func = (x: Big) => Big(Math.abs(this.torque(x.toNumber())))
-        const seed = 0.5 * (Math.PI / 180.0 + Math.PI / 2)
-        const result = newtonRaphson(min_func, seed)
-        if (result === false) {
-            throw Error("Newton-Raphson failed to converge")
-        }
-        else {
-            this._aoa_no_torque = result.toNumber()
-
-            // Calculate corresponding lift and drag
-            this._lift = this.lift(this._aoa_no_torque)
-            this._drag = this.drag(this._aoa_no_torque)
-        }
-        
-        // Source : https://www.grc.nasa.gov/WWW/K-12/airplane/kitefor.html
-        this._vert_tension = this.vertical_tension()
-        this._horiz_tension = this.horiz_tension()
-        this._tension = Math.sqrt(Math.pow(this._horiz_tension, 2) + Math.pow(this._vert_tension, 2))
-    }
 }
 
 export class DiamondDashboard extends Dashboard {
@@ -207,6 +202,7 @@ export class DiamondDashboard extends Dashboard {
         const cg = this._cg
         const xb = (this.bridle as DiamondBridle).Xb
         const yb = (this.bridle as DiamondBridle).Yb
+
 
         const T = (- L * Math.cos(a) * (yb - cp) 
             - L * Math.sin(a) * xb 

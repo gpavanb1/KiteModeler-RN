@@ -17,4 +17,3 @@ export function solveDiamond(inp: any) {
 
     return dashboard
 }
- 

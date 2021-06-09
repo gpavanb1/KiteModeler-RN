@@ -10,8 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@fvictorio/newton-raphson-method": "^1.0.5",
-    "@types/big.js": "^6.1.1",
+    "@types/lodash": "^4.14.170",
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-exception-handler": "^2.10.10"
