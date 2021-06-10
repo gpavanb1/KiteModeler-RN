@@ -12,6 +12,8 @@ target 'KiteModeler_Reboot' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-viewpager', :path => '../node_modules/@react-native-community/viewpager'
+
   target 'KiteModeler_RebootTests' do
     inherit! :complete
     # Pods for testing
