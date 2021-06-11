@@ -10,8 +10,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/slider": "^3.0.3",
     "@react-native-community/viewpager": "^5.0.11",
     "@types/lodash": "^4.14.170",
+    "@types/react-native-modal-dropdown": "^0.7.0",
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-exception-handler": "^2.10.10",

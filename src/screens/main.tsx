@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { View, useWindowDimensions } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import * as React from 'react'
+import { View, useWindowDimensions } from 'react-native'
+import { TabView, SceneMap } from 'react-native-tab-view'
 import geom from './geom'
 import bridle from './bridle'
-import fly from './fly';
-import material from './material';
+import fly from './fly'
+import material from './material'
 
 
 export function MyTabView() {
