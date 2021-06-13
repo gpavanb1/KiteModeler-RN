@@ -14,7 +14,7 @@ import { Alert, BackHandler } from "react-native";
 import { setJSExceptionHandler, setNativeExceptionHandler } from "react-native-exception-handler";
 import { LogBox } from 'react-native';
 
-import MyTabView from './src/screens/main'
+import MainDiamond from './src/screens/main'
 
 // Ignore reanimated logs
 LogBox.ignoreLogs(['Reanimated 2']);
@@ -60,7 +60,8 @@ setNativeExceptionHandler((errorString) => {
 
 const App = () => {
   return (
-    <MyTabView />
+    // Right now there is only diamond
+    <MainDiamond />
   );
 };
 

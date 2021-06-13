@@ -4,7 +4,7 @@ import { style } from './style'
 import Slider from '@react-native-community/slider'
 
 
-export default function bridle() {
+export default function Bridle(props: any) {
     return (
         <SafeAreaView style={style.view}>
             <Image
@@ -22,6 +22,7 @@ export default function bridle() {
                 maximumValue={1}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.bridle_h}
             />
 
             <Text
@@ -35,6 +36,7 @@ export default function bridle() {
                 maximumValue={1}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.bridle_k}
             />
         </SafeAreaView>
     )

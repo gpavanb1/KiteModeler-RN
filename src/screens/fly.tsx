@@ -4,7 +4,7 @@ import { style } from './style'
 import Slider from '@react-native-community/slider'
 
 
-export default function fly() {
+export default function Fly(props: any) {
     return (
         <SafeAreaView style={style.view}>
             <Image
@@ -22,6 +22,7 @@ export default function fly() {
                 maximumValue={1}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.fly_wind_speed}
             />
 
             <Text
@@ -35,6 +36,7 @@ export default function fly() {
                 maximumValue={1}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.fly_line_length}
             />
 
             <Text
@@ -48,6 +50,7 @@ export default function fly() {
                 maximumValue={1}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.fly_altitude}
             />
         </SafeAreaView>
     )

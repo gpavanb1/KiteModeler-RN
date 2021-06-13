@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Image, Text, SafeAreaView } from 'react-native'
 import { style } from './style'
 import { Picker } from 'react-native-woodpicker'
@@ -8,7 +8,8 @@ function generateObjectFromArray(arr: string[]): Array<PickerItem> {
     return arr.map((e: string) => ({ label: e, value: e }))
 }
 
-export default function material() {
+export default function Material(props: any) {
+
     const surfaceItems = generateObjectFromArray([
         "Plastic", "Tissue", "Rip Stop", "Silk Span", "Cellophane"
     ])
@@ -22,12 +23,6 @@ export default function material() {
         "Nylon", "Cotton"
     ])
 
-    // State hooks
-    const [surface, setSurface] = useState(surfaceItems[0])
-    const [frame, setFrame] = useState(frameItems[0])
-    const [tail, setTail] = useState(tailItems[0])
-    const [line, setLine] = useState(lineItems[0])
-    
 
     return (
         <SafeAreaView style={style.view}>
@@ -42,11 +37,11 @@ export default function material() {
             </Text>
             <Picker
                 style={style.picker}
-                item={surface}
+                item={props.data.surface}
                 items={surfaceItems}
-                onItemChange={setSurface}
+                onItemChange={props.setters.material_surface}
                 mode="dropdown"
-                placeholder="Select..."
+                placeholder={surfaceItems[0].value}
             />
 
 
@@ -58,11 +53,11 @@ export default function material() {
             </Text>
             <Picker
                 style={style.picker}
-                item={frame}
+                item={props.data.frame}
                 items={frameItems}
-                onItemChange={setFrame}
+                onItemChange={props.setters.material_frame}
                 mode="dropdown"
-                placeholder="Select..."
+                placeholder={frameItems[0].value}
             />
 
             <Text
@@ -72,11 +67,11 @@ export default function material() {
             </Text>
             <Picker
                 style={style.picker}
-                item={tail}
+                item={props.data.tail}
                 items={tailItems}
-                onItemChange={setTail}
+                onItemChange={props.setters.material_tail}
                 mode="dropdown"
-                placeholder="Select..."
+                placeholder={tailItems[0].value}
             />
 
             <Text
@@ -86,11 +81,11 @@ export default function material() {
             </Text>
             <Picker
                 style={style.picker}
-                item={line}
+                item={props.data.line}
                 items={lineItems}
-                onItemChange={setLine}
+                onItemChange={props.setters.material_line}
                 mode="dropdown"
-                placeholder="Select..."
+                placeholder={lineItems[0].value}
             />
         </SafeAreaView>
     )

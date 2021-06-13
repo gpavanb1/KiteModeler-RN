@@ -4,7 +4,7 @@ import { style } from './style'
 import Slider from '@react-native-community/slider'
 
 
-export default function geom() {
+export default function Geom(props: any) {
     return (
         <SafeAreaView style={style.view}>
             <Image
@@ -20,9 +20,10 @@ export default function geom() {
             <Slider
                 style={style.slider}
                 minimumValue={0}
-                maximumValue={1}
+                maximumValue={100}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.geom_h1}
             />
 
             <Text
@@ -33,9 +34,10 @@ export default function geom() {
             <Slider
                 style={style.slider}
                 minimumValue={0}
-                maximumValue={1}
+                maximumValue={100}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.geom_h2}
             />
 
             <Text
@@ -46,9 +48,10 @@ export default function geom() {
             <Slider
                 style={style.slider}
                 minimumValue={0}
-                maximumValue={1}
+                maximumValue={100}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.geom_w1}
             />
 
             <Text
@@ -59,9 +62,10 @@ export default function geom() {
             <Slider
                 style={style.slider}
                 minimumValue={0}
-                maximumValue={1}
+                maximumValue={100}
                 minimumTrackTintColor="#000000"
                 maximumTrackTintColor="#000000"
+                onSlidingComplete={props.setters.geom_t}
             />
         </SafeAreaView>
     )

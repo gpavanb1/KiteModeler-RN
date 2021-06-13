@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, SafeAreaView } from 'react-native'
 
-export default function results() {
+export default function Results(props: any) {
     return (
         <SafeAreaView>
-            <Text>Oh yeah!</Text>
+            <Text>{JSON.stringify(props.data)}</Text>
         </SafeAreaView>
     )
 }
