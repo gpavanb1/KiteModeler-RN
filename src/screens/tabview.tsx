@@ -36,7 +36,7 @@ export default class MyTabView extends React.Component<
 > {
 
   state = {
-    index: 1,
+    index: 0,
     routes: [
       { key: 'first', title: 'Shape' },
       { key: 'second', title: 'Bridle' },
@@ -63,14 +63,6 @@ export default class MyTabView extends React.Component<
         return null;
     }
   }
-
-  // private renderScene = SceneMap({
-  //   first: Test,
-  //   second: Test,
-  //   third: Test,
-  //   fourth: Test,
-  //   fifth: Test,
-  // })
 
   private renderTabBar = (
     props: any // SceneRendererProps & { navigationState: State }

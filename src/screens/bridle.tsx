@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Text, SafeAreaView } from 'react-native'
 import { style } from './style'
-import Slider from '@react-native-community/slider'
+import SliderLabel from '../components/SliderLabel'
 
 
 export default function Bridle(props: any) {
@@ -11,32 +11,25 @@ export default function Bridle(props: any) {
                 style={style.image}
                 source={require('../../assets/bridle.png')} />
 
-            <Text
-                style={style.caption}
-            >
-                Bridle Length (B - cm):
-            </Text>
-            <Slider
-                style={style.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#000000"
-                maximumTrackTintColor="#000000"
-                onSlidingComplete={props.setters.bridle_h}
+            <SliderLabel
+                textStyle={style.caption}
+                sliderStyle={style.slider}
+                caption="Bridle Length (B - cm):"
+                defaultValue={props.data.b}
+                min={0}
+                max={100}
+                setter={props.setters.bridle_h}
             />
 
-            <Text
-                style={style.caption}
-            >
-                Knot Length (K - cm):
-            </Text>
-            <Slider
-                style={style.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#000000"
-                maximumTrackTintColor="#000000"
-                onSlidingComplete={props.setters.bridle_k}
+
+            <SliderLabel
+                textStyle={style.caption}
+                sliderStyle={style.slider}
+                caption="Knot Length (K - cm):"
+                defaultValue={props.data.k}
+                min={0}
+                max={100}
+                setter={props.setters.bridle_k}
             />
         </SafeAreaView>
     )

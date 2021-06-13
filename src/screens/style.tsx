@@ -18,7 +18,7 @@ export const style = StyleSheet.create({
         paddingBottom: 5
     },
     slider: {
-        width: '80%',
+        width: '90%',
         paddingBottom: 20
     },
     picker: {

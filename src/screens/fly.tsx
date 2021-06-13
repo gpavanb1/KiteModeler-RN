@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Text, SafeAreaView } from 'react-native'
 import { style } from './style'
-import Slider from '@react-native-community/slider'
+import SliderLabel from '../components/SliderLabel'
 
 
 export default function Fly(props: any) {
@@ -11,46 +11,35 @@ export default function Fly(props: any) {
                 style={style.image}
                 source={require('../../assets/fly.png')} />
 
-            <Text
-                style={style.caption}
-            >
-                Wind Speed (m/s):
-            </Text>
-            <Slider
-                style={style.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#000000"
-                maximumTrackTintColor="#000000"
-                onSlidingComplete={props.setters.fly_wind_speed}
+            <SliderLabel
+                textStyle={style.caption}
+                sliderStyle={style.slider}
+                caption="Wind Speed (m/s):"
+                defaultValue={props.data.wind_speed}
+                min={0}
+                max={100}
+                setter={props.setters.fly_wind_speed}
+            />
+            
+
+            <SliderLabel
+                textStyle={style.caption}
+                sliderStyle={style.slider}
+                caption="Line Length (m):"
+                defaultValue={props.data.line_length}
+                min={0}
+                max={100}
+                setter={props.setters.fly_line_length}
             />
 
-            <Text
-                style={style.caption}
-            >
-                Line Length (m):
-            </Text>
-            <Slider
-                style={style.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#000000"
-                maximumTrackTintColor="#000000"
-                onSlidingComplete={props.setters.fly_line_length}
-            />
-
-            <Text
-                style={style.caption}
-            >
-                Altitude (m):
-            </Text>
-            <Slider
-                style={style.slider}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#000000"
-                maximumTrackTintColor="#000000"
-                onSlidingComplete={props.setters.fly_altitude}
+            <SliderLabel
+                textStyle={style.caption}
+                sliderStyle={style.slider}
+                caption="Altitude (m):"
+                defaultValue={props.data.altitude}
+                min={0}
+                max={100}
+                setter={props.setters.fly_altitude}
             />
         </SafeAreaView>
     )
