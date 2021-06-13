@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Text, SafeAreaView, TouchableOpacity } from 'react-native'
+import { Image, Text, SafeAreaView } from 'react-native'
 import { style } from './style'
 import { Picker } from 'react-native-woodpicker'
 import type { PickerItem } from 'react-native-woodpicker'

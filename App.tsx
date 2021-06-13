@@ -8,23 +8,16 @@
  * @format
  */
 
- import React from 'react';
- import {
-   SafeAreaView,
-   Text,
-   useColorScheme,
- } from 'react-native';
-
- import {
-   Colors,
- } from 'react-native/Libraries/NewAppScreen';
+import React from 'react';
 
 import { Alert, BackHandler } from "react-native";
 import { setJSExceptionHandler, setNativeExceptionHandler } from "react-native-exception-handler";
+import { LogBox } from 'react-native';
 
-import { MyTabView } from './src/screens/main'
+import MyTabView from './src/screens/main'
 
-
+// Ignore reanimated logs
+LogBox.ignoreLogs(['Reanimated 2']);
 
 const reporter = (error: any) => {
   // Logic for reporting to devs
@@ -65,10 +58,10 @@ setNativeExceptionHandler((errorString) => {
   //
 });
 
- const App = () => {
-   return (
-       <MyTabView />
-   );
- };
+const App = () => {
+  return (
+    <MyTabView />
+  );
+};
 
- export default App;
+export default App;
