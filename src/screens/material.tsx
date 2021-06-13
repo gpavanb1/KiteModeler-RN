@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Image, Text, SafeAreaView, View } from 'react-native'
+import { Image, Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import { style } from './style'
-import ModalDropdown from 'react-native-modal-dropdown';
+import { Picker } from 'react-native-woodpicker'
+import type { PickerItem } from 'react-native-woodpicker'
 
-function generateObjectFromArray(arr: string[]) {
-    return arr.map((e: string) => e)
+function generateObjectFromArray(arr: string[]): Array<PickerItem> {
+    return arr.map((e: string) => ({ label: e, value: e }))
 }
 
 export default function material() {
@@ -27,11 +28,6 @@ export default function material() {
     const [tail, setTail] = useState(tailItems[0])
     const [line, setLine] = useState(lineItems[0])
     
-    const onSurface = (idx: string, v: string) => setSurface(v)
-    const onFrame = (idx: string, v: string) => setFrame(v)
-    const onTail = (idx: string, v: string) => setTail(v)
-    const onLine = (idx: string, v: string) => setLine(v)
-
 
     return (
         <SafeAreaView style={style.view}>
@@ -44,15 +40,15 @@ export default function material() {
             >
                 Surface:
             </Text>
-            <ModalDropdown
+            <Picker
                 style={style.picker}
-                dropdownTextStyle={style.caption}
-                textStyle={style.caption}
-                options={surfaceItems}
-                defaultValue={surface}
-                onSelect={onSurface}
+                item={surface}
+                items={surfaceItems}
+                onItemChange={setSurface}
+                mode="dropdown"
+                placeholder="Select..."
             />
-            
+
 
 
             <Text
@@ -60,13 +56,13 @@ export default function material() {
             >
                 Frame:
             </Text>
-            <ModalDropdown
+            <Picker
                 style={style.picker}
-                textStyle={style.caption}
-                dropdownTextStyle={style.caption}
-                options={frameItems}
-                defaultValue={frame}
-                onSelect={onFrame}
+                item={frame}
+                items={frameItems}
+                onItemChange={setFrame}
+                mode="dropdown"
+                placeholder="Select..."
             />
 
             <Text
@@ -74,13 +70,13 @@ export default function material() {
             >
                 Tail:
             </Text>
-            <ModalDropdown
+            <Picker
                 style={style.picker}
-                dropdownTextStyle={style.caption}
-                textStyle={style.caption}
-                options={tailItems}
-                defaultValue={tail}
-                onSelect={onTail}
+                item={tail}
+                items={tailItems}
+                onItemChange={setTail}
+                mode="dropdown"
+                placeholder="Select..."
             />
 
             <Text
@@ -88,13 +84,13 @@ export default function material() {
             >
                 Line:
             </Text>
-            <ModalDropdown
+            <Picker
                 style={style.picker}
-                dropdownTextStyle={style.caption}
-                textStyle={style.caption}
-                options={lineItems}
-                defaultValue={line}
-                onSelect={onLine}
+                item={line}
+                items={lineItems}
+                onItemChange={setLine}
+                mode="dropdown"
+                placeholder="Select..."
             />
         </SafeAreaView>
     )

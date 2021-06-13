@@ -22,10 +22,11 @@ export const style = StyleSheet.create({
         paddingBottom: 20
     },
     picker: {
-        width: '80%',
-        marginBottom: 20,
+        height: 40,
         alignItems: 'center', 
         justifyContent: 'center',
+        padding: 10,
+        marginBottom: 10,
         borderWidth: 0.2,
         borderRadius: 5
     }
