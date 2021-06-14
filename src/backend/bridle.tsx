@@ -10,13 +10,7 @@ export abstract class Bridle {}
 
 export function knot_angle(b: number, k: number, h: number) : number {
     const ret = (k*k + h*h - (b - k)*(b - k))/(2*k*h)
-    if (Math.abs(ret) > 1) {
-        return 0.0
-    }   
-    else {
-        return Math.acos(ret)
-    }
-        
+    return (Math.abs(ret) > 1) ? 0.0 : Math.acos(ret)  
 };
     
 

@@ -97,22 +97,12 @@ export abstract class Dashboard {
         const s = this.fly.line
         const g = s * p
         const ret = this._lift - g - this._weight
-        if (ret >= 0) {
-            return ret
-        } 
-        else {
-            return 0.0
-        }
+        return (ret > 0) ? ret : 0.0
     }
 
 
     horiz_tension() {
-        if (this._vert_tension > 0) {
-            return this._drag
-        } 
-        else {
-            return 0.0
-        }
+        return (this._vert_tension > 0) ? this._drag : 0.0
     }
 
 
