@@ -60,3 +60,9 @@ buck-out/
 
 # Coverage
 coverage/
+
+# App keys
+*.keystore
+
+# Bundle
+android/app/src/main/assets/*

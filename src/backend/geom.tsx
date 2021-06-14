@@ -46,14 +46,20 @@ export class DiamondGeometry extends Geometry {
     // Source: https://www.grc.nasa.gov/WWW/K-12/airplane/kitelift.html
     // Coefficient of lift for a thin airfoil
     cl(a: number) {
+        // Derived from Kutta-Joukowski theorem
+        // Calculate circulation for uniform velocity around thin plate
+        // Get lift coefficient from L = rho*U*Gamma
         const Clo = 2 * Math.PI * a
+        // Downwash effects
         return Clo / (1 + Clo / (Math.PI * this.AR))
     }
 
     // Source: https://www.grc.nasa.gov/WWW/K-12/airplane/kitedrag.html
     // Coefficient of drag for a thin airfoil
     cd(a: number) {
+        // Blasius equation solution
         const Cdo = 1.28 * Math.sin(a)
+        // Profile drag + Induced drag 
         return Cdo + Math.pow(this.cl(a), 2) / (.7 * Math.PI * this.AR)
     }
 
