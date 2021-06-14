@@ -7,7 +7,7 @@
 This repository contains the open-source back-end and front-end
 code for KiteModeler-Reboot-RN, which is a modern
 version of [KiteModeler](https://www.grc.nasa.gov/WWW/K-12/airplane/kiteprog.html) from NASA Glenn. 
-Also check out the Python version here [[repo]](github.com/gpavanb1/KiteModeler) [[live demo]](https://kite-modeler.herokuapp.com/)
+Also check out the Python version here [[repo]](https://github.com/gpavanb1/KiteModeler) [[live demo]](https://kite-modeler.herokuapp.com/)
 
 The code has been written using Typescript React. This app will remain free and open-source.
 
