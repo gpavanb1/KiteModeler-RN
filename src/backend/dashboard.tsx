@@ -9,9 +9,9 @@ export abstract class Dashboard {
     bridle: Bridle;
     fly: FlyParameters;
     compo: Composition;
-    pressure: number;
-    temperature: number;
-    density: number;
+    _pressure: number;
+    _temperature: number;
+    _density: number;
     _weight: number;
     _cp: number;
     _cg: number;
@@ -32,9 +32,9 @@ export abstract class Dashboard {
         this.compo = compo
 
         // Get sea level properties
-        this.pressure = this.fly.env.pressure(this.fly.altitude)
-        this.temperature = this.fly.env.temperature(this.fly.altitude)
-        this.density = this.fly.env.density(this.fly.altitude)
+        this._pressure = this.fly.env.pressure(this.fly.altitude)
+        this._temperature = this.fly.env.temperature(this.fly.altitude)
+        this._density = this.fly.env.density(this.fly.altitude)
 
         // Weight
         this._weight = this.kite_weight()
@@ -67,7 +67,7 @@ export abstract class Dashboard {
 
     lift(a: number) {
         const cl = this.geom.cl(a)
-        const rho = this.density
+        const rho = this._density
         // Convert to m2
         const A = 1.e-4 * this.geom.surface_area()
         const V = this.fly.wind_speed
@@ -80,7 +80,7 @@ export abstract class Dashboard {
 
     drag(a: number) {
         const cd = this.geom.cd(a)
-        const rho = this.density
+        const rho = this._density
         // Convert to m2
         const A = 1.e-4 * this.geom.surface_area()
         const V = this.fly.wind_speed
@@ -160,7 +160,7 @@ export abstract class Dashboard {
     }
 
     height() {
-        return this.catenary_equation(this.range())
+        return this.fly.altitude + this.catenary_equation(this.range())
     }
         
     abstract cg(): number

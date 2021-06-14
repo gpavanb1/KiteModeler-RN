@@ -16,7 +16,7 @@ export default function Bridle(props: any) {
                 sliderStyle={style.slider}
                 caption="Bridle Length (B - cm):"
                 defaultValue={props.data.b}
-                min={0}
+                min={props.data.k + 0.1}
                 max={100}
                 setter={props.setters.bridle_h}
             />
@@ -27,10 +27,14 @@ export default function Bridle(props: any) {
                 sliderStyle={style.slider}
                 caption="Knot Length (K - cm):"
                 defaultValue={props.data.k}
-                min={0}
-                max={100}
+                min={0.1}
+                max={props.data.b - 0.1}
                 setter={props.setters.bridle_k}
             />
+
+            <Text style={style.yay_nay}>
+                Bridle will be ensured to be always larger than knot
+            </Text>
         </SafeAreaView>
     )
 }

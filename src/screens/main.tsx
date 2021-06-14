@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { SafeAreaView } from 'react-native'
 import MyTabView from './tabview'
 
 
@@ -52,22 +51,22 @@ export default class MainDiamond extends Component<any, any> {
         },
         material_surface: (v: any) => {
             var material = { ...this.state.material }
-            material.surface = v
+            material.surface = v.value
             this.setState({ material })
         },
         material_frame: (v: any) => {
             var material = { ...this.state.material }
-            material.frame = v
+            material.frame = v.value
             this.setState({ material })
         },
         material_tail: (v: any) => {
             var material = { ...this.state.material }
-            material.tail = v
+            material.tail = v.value
             this.setState({ material })
         },
         material_line: (v: any) => {
             var material = { ...this.state.material }
-            material.line = v
+            material.line = v.value
             this.setState({ material })
         }
     }
@@ -88,16 +87,15 @@ export default class MainDiamond extends Component<any, any> {
             fly: {
                 wind_speed: 3.0,
                 line_length: 30.,
-                altitude: 0.0
+                altitude: 0.0,
+                env_name: "Earth"
             },
             material: {
                 surface: "Plastic",
                 frame: "1/4 Balsa",
                 tail: "1 in Plastic",
                 line: "Nylon"
-            },
-            env_name: "Earth",
-            results: {}
+            }
         }
     }
 

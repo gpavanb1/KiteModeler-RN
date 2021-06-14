@@ -18,7 +18,7 @@ export default function Geom(props: any) {
                 sliderStyle={style.slider}
                 caption="Top to Frame Intersection (H1 - cm):"
                 defaultValue={props.data.h1}
-                min={0}
+                min={0.1}
                 max={100}
                 setter={props.setters.geom_h1}
             />
@@ -29,7 +29,7 @@ export default function Geom(props: any) {
                 sliderStyle={style.slider}
                 caption="Frame Intersection to Bottom (H2 - cm):"
                 defaultValue={props.data.h2}
-                min={0}
+                min={0.1}
                 max={100}
                 setter={props.setters.geom_h2}
             />
@@ -39,7 +39,7 @@ export default function Geom(props: any) {
                 sliderStyle={style.slider}
                 caption="Side-to-Side (W1 - cm):"
                 defaultValue={props.data.w1}
-                min={0}
+                min={0.1}
                 max={100}
                 setter={props.setters.geom_w1}
             />

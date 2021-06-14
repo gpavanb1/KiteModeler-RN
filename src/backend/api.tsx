@@ -5,14 +5,14 @@ import { Composition } from './composition'
 import { DiamondDashboard } from './dashboard'
 
 export function solveDiamond(inp: any) {
-    const geom = new DiamondGeometry(inp.h1, inp.h2, inp.w1, inp.t)
-    const bridle = new DiamondBridle(inp.B, inp.K, geom.h())
-    const fly = new FlyParameters(inp.wind_speed, inp.altitude,
-                        inp.line_length, inp.env_name)
-    const compo = new Composition(inp.surface,
-                        inp.frame,
-                        inp.tail,
-                        inp.line)
+    const geom = new DiamondGeometry(inp.geom.h1, inp.geom.h2, inp.geom.w1, inp.geom.t)
+    const bridle = new DiamondBridle(inp.bridle.b, inp.bridle.k, geom.h())
+    const fly = new FlyParameters(inp.fly.wind_speed, inp.fly.altitude,
+                        inp.fly.line_length, inp.fly.env_name)
+    const compo = new Composition(inp.material.surface,
+                        inp.material.frame,
+                        inp.material.tail,
+                        inp.material.line)
     const dashboard = new DiamondDashboard(geom, bridle, fly, compo)
 
     return dashboard

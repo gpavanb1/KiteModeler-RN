@@ -16,7 +16,7 @@ export default function Fly(props: any) {
                 sliderStyle={style.slider}
                 caption="Wind Speed (m/s):"
                 defaultValue={props.data.wind_speed}
-                min={0}
+                min={0.1}
                 max={100}
                 setter={props.setters.fly_wind_speed}
             />
@@ -27,7 +27,7 @@ export default function Fly(props: any) {
                 sliderStyle={style.slider}
                 caption="Line Length (m):"
                 defaultValue={props.data.line_length}
-                min={0}
+                min={0.1}
                 max={100}
                 setter={props.setters.fly_line_length}
             />

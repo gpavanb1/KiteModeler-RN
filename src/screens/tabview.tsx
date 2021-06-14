@@ -3,8 +3,6 @@ import {
   TabView,
   TabBar,
   NavigationState,
-  SceneMap,
-  SceneRendererProps
 } from 'react-native-tab-view'
 import { Text, SafeAreaView} from 'react-native'
 import Geom from './geom'
@@ -19,15 +17,6 @@ type State = NavigationState<{
   key: string;
   title: string;
 }>;
-
-
-export function Test() {
-  return (
-    <SafeAreaView>
-      <Text>Hi</Text>
-    </SafeAreaView>
-  )
-}
 
 
 export default class MyTabView extends React.Component<
@@ -58,7 +47,7 @@ export default class MyTabView extends React.Component<
       case 'fourth':
         return <Material data={this.props.data.material} setters={this.props.setters}/>;
       case 'fifth':
-        return <Results data={this.props}/>;
+        return <Results data={this.props.data}/>;
       default:
         return null;
     }

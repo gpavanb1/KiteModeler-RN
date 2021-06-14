@@ -29,6 +29,18 @@ export const style = StyleSheet.create({
         marginBottom: 10,
         borderWidth: 0.2,
         borderRadius: 5
+    },
+    summary: {
+        marginLeft: 10,
+        marginBottom: 10
+    },
+    summary_values: {
+        marginLeft: 20
+    },
+    yay_nay: {
+        marginVertical: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
 

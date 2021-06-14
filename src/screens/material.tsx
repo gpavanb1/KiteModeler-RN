@@ -4,14 +4,17 @@ import { style } from './style'
 import { Picker } from 'react-native-woodpicker'
 import type { PickerItem } from 'react-native-woodpicker'
 
+
+const valToPicker: any = (e: string) => ({label: e, value: e})
+
 function generateObjectFromArray(arr: string[]): Array<PickerItem> {
-    return arr.map((e: string) => ({ label: e, value: e }))
+    return arr.map((e: string) => (valToPicker(e)))
 }
 
 export default function Material(props: any) {
 
     const surfaceItems = generateObjectFromArray([
-        "Plastic", "Tissue", "Rip Stop", "Silk Span", "Cellophane"
+        "Plastic", "Tissue Paper", "Rip Stop", "Silk Span", "Cellophane"
     ])
     const frameItems = generateObjectFromArray([
         "1/4 Balsa", "1/8 Balsa", "1/4 Birch", "3/8 Plastic Tube", "Skewer Stick"
@@ -22,7 +25,6 @@ export default function Material(props: any) {
     const lineItems = generateObjectFromArray([
         "Nylon", "Cotton"
     ])
-
 
     return (
         <SafeAreaView style={style.view}>
@@ -37,14 +39,12 @@ export default function Material(props: any) {
             </Text>
             <Picker
                 style={style.picker}
-                item={props.data.surface}
+                item={valToPicker(props.data.surface)}
                 items={surfaceItems}
                 onItemChange={props.setters.material_surface}
                 mode="dropdown"
                 placeholder={surfaceItems[0].value}
             />
-
-
 
             <Text
                 style={style.caption}
@@ -53,7 +53,7 @@ export default function Material(props: any) {
             </Text>
             <Picker
                 style={style.picker}
-                item={props.data.frame}
+                item={valToPicker(props.data.frame)}
                 items={frameItems}
                 onItemChange={props.setters.material_frame}
                 mode="dropdown"
@@ -67,7 +67,7 @@ export default function Material(props: any) {
             </Text>
             <Picker
                 style={style.picker}
-                item={props.data.tail}
+                item={valToPicker(props.data.tail)}
                 items={tailItems}
                 onItemChange={props.setters.material_tail}
                 mode="dropdown"
@@ -81,7 +81,7 @@ export default function Material(props: any) {
             </Text>
             <Picker
                 style={style.picker}
-                item={props.data.line}
+                item={valToPicker(props.data.line)}
                 items={lineItems}
                 onItemChange={props.setters.material_line}
                 mode="dropdown"

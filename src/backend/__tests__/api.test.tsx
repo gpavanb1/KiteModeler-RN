@@ -3,21 +3,31 @@ import { isMatch } from 'lodash'
 
 test('kite-modeler-1', () => {
     const inp = {
-        'h1': 12.5,
-        'h2': 25.6,
-        'w1': 25.5,
-        'B': 40.1,
-        'K': 30.5,
-        'wind_speed': 3.,
-        'altitude': 0.0,
-        'line_length': 30.,
-        'env_name': "Earth",
-        'surface': "Plastic",
-        'frame': "1/4 Balsa",
-        'tail': "1 in Plastic",
-        'line': "Nylon"
+        geom: {
+            'h1': 12.5,
+            'h2': 25.6,
+            'w1': 25.5,
+            't': 0
+        },
+        bridle: {
+            'b': 40.1,
+            'k': 30.5,
+        },
+        fly: {
+            'wind_speed': 3.,
+            'altitude': 0.0,
+            'line_length': 30.,
+            'env_name': "Earth",
+        },
+        material: {
+            'surface': "Plastic",
+            'frame': "1/4 Balsa",
+            'tail': "1 in Plastic",
+            'line': "Nylon"
+        }
+
     }
-    
+
     const out = solveDiamond(inp)
 
     const expected = {
