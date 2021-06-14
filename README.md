@@ -26,7 +26,7 @@ Tests can be run using `npm test` and coverage report can be obtained by adding 
 
 ## Sample
 
-<img src="./assets/sample.png" width="600">
+<img src="./assets/sample.png" width="300">
 
 ## Whom to contact?
 
