@@ -1,4 +1,4 @@
-# KiteModeler - Reboot
+# KiteModeler - RN
 
 ![Made with Love in India](https://madewithlove.org.in/badge.svg)
 
@@ -37,7 +37,7 @@ for any questions.
 
 * The original KiteModeler can be found [here](https://www.grc.nasa.gov/www/k-12/airplane/kiteprog.html)
 
-* The bounded minimization routine has been borrowed from the [Scipy]() implementation in Python
+* The bounded minimization routine has been borrowed from the [Scipy](https://github.com/scipy/scipy/blob/master/scipy/optimize/optimize.py) implementation in Python
 and adapted for Typescript.
 
 * Hat-tip to [Sujeet](https://github.com/sujeet) for suggesting a JS implementation.
