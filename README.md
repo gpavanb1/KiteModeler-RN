@@ -6,7 +6,8 @@
 
 This repository contains the open-source back-end and front-end
 code for KiteModeler-Reboot-RN, which is a modern
-version of [KiteModeler](https://www.grc.nasa.gov/WWW/K-12/airplane/kiteprog.html) from NASA Glenn.
+version of [KiteModeler](https://www.grc.nasa.gov/WWW/K-12/airplane/kiteprog.html) from NASA Glenn. 
+Also check out the Python version here [repo](github.com/gpavanb1/KiteModeler) [live demo](kite-modeler.herokuapp.com/)
 
 The code has been written using Typescript React. This app will remain free and open-source.
 
@@ -25,7 +26,7 @@ Tests can be run using `npm test` and coverage report can be obtained by adding 
 
 ## Sample
 
-<img src="sample/sample.PNG" width="600">
+<img src="./assets/sample.png" width="600">
 
 ## Whom to contact?
 
@@ -34,7 +35,7 @@ for any questions.
 
 ## Acknowledgements
 
-* The original KiteModeler can be found (here)[https://www.grc.nasa.gov/www/k-12/airplane/kiteprog.html]
+* The original KiteModeler can be found [here](https://www.grc.nasa.gov/www/k-12/airplane/kiteprog.html)
 
 * The bounded minimization routine has been borrowed from the [Scipy]() implementation in Python
 and adapted for Typescript.
