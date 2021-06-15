@@ -13,7 +13,7 @@ The code has been written using Typescript React. This app will remain free and 
 
 ## How to install
 
-Download the APK files, which you can find in the **Releases** 👉
+Download the APK files, which you can find in the [Releases](https://github.com/gpavanb1/KiteModeler-RN/releases)
 
 ## How to build and execute
 * Run the build tool in one terminal using `npx react-native start`

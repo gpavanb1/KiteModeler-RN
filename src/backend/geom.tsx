@@ -68,18 +68,3 @@ export class DiamondGeometry extends Geometry {
         return 0.5 * (this.h1 + this.h2) + this.h2 / 3
     }   
 }
-        
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
